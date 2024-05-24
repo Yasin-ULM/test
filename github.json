@@ -1,7 +1,0 @@
-{
-  "headers": {
-    "/**": {
-      "ngrok-skip-browser-warning": "any-value"
-    }
-  }
-}
