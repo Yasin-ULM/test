@@ -99,6 +99,7 @@
             iframe.src = url;
             iframe.frameBorder = '0';
             iframe.scrolling = 'yes';
+            iframe.allow = 'microphone; clipboard-read';
             iframe.allowSameOrigin = true;
             iframeContainer.appendChild(iframe);
           } else {
