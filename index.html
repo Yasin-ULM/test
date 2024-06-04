@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>GH OFFICIAL</title>
+    <link rel="icon" type="image/jpg" href="logo.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
       /* Make the iframe full-screen */
@@ -12,6 +13,15 @@
         height: 100%;
         overflow: hidden;
         font-family: Inter, sans-serif;
+      }
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        overflow: auto;
       }
       #maintenance-message {
         display: none;
@@ -78,11 +88,21 @@
     <script>
       const url = 'https://e80esqijxyox.share.zrok.io';
       const maintenanceMessage = document.getElementById('maintenance-message');
+      const iframeContainer = document.createElement('div');
+      iframeContainer.style.width = '100%';
+      iframeContainer.style.height = '100%';
+      document.body.appendChild(iframeContainer);
 
       fetch(url, { method: 'HEAD' })
         .then(response => {
           if (response.ok) {
-            window.location.href = url;
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.frameBorder = '0';
+            iframe.scrolling = 'yes';
+            iframe.allow = 'microphone; clipboard-read; clipboard-write';
+            iframe.allowSameOrigin = true;
+            iframeContainer.appendChild(iframe);
           } else {
             maintenanceMessage.style.display = 'block';
           }
